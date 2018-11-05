@@ -49,6 +49,10 @@
             <a href="#anchor_14905539486182806209">添加 CNAME</a>
           </li>
           
+          <li class="t3" >
+            <a href="#anchor_2197661492698187715">添加 A 记录</a>
+          </li>
+          
           <li class="t1" >
             <a href="#anchor_1662521891503104219">Tips</a>
           </li>
@@ -80,7 +84,7 @@
         </li>
         
         <li>
-            <a href="/tags.·html" target="">标签</a>
+            <a href="/tags.html" target="">标签</a>
         </li>
         
         <li>
@@ -100,6 +104,10 @@
               <div class="tags">
                 <i class="iconfont icon-tag"></i>
                 
+                <a href="/tags.html#anchor_140160299447134143" class="tag">GitHub</a>
+                
+                <a href="/tags.html#anchor_15984483045128240241" class="tag">HTTPS</a>
+                
               </div>
             </div>
           </header>
@@ -108,11 +116,11 @@
 <p>目前还不知道更换证书或更换 VPS 能不能解决这个问题（感觉即使能解决也不是持久之计，有条件的同学还是备案用境内的 VPS 吧）。由于域名转入备案太麻烦，而且正巧发现 Github Pages 对自定义域名支持 HTTPS 了，所以决定吧网站迁移到 Github Pages 上。</p>
 <h1><a id="anchor_3620932083382753783"></a>迁移文件</h1>
 <h2><a id="anchor_16152966785279059658"></a>选择站点类型</h2>
-<p>Github Pages 站点的静态文件都保存在 Repository 中。Github Pages 提供了 User or organization site 和 Project site 两种方式托管静态文件。</p>
+<p>GitHub Pages 站点的静态文件都保存在 Repository 中。GitHub Pages 提供了 User or organization site 和 Project site 两种方式托管静态文件。</p>
 <p>两种方式基本没有什么区别。由于我要部署的是个人博客，因此我选择使用 User or organization site。</p>
-<p>顺带说一句，Github Pages 是支持 Jekyll 模版语法。所以可以通过 Jekyll 来“动态”生成网站。</p>
+<p>顺带说一句，GitHub Pages 是支持 Jekyll 模版语法。所以可以通过 Jekyll 来“动态”生成网站。</p>
 <h2><a id="anchor_6550657040707835860"></a>创建<a id="anchor_16502351957971548275"></a>&配置Repository</h2>
-<p>首先需要创建一个以 username.github.io 命名的 Repository。<strong>注意替换 <code>username</code>为你的用户名</strong>。</p>
+<p>首先需要创建一个以 username.GitHub.io 命名的 Repository。<strong>注意替换 <code>username</code>为你的用户名</strong>。</p>
 <p>创建好 Repository 后按正常的提交代码的流程将站点文件提交到 master 分支。</p>
 <p>如果操作正确而且如果你不需要绑定域名的话，现在你就可以通过访问 username.github.io 访问你的网站了。</p>
 <h2><a id="anchor_14572779630562288028"></a>绑定域名<a id="anchor_5713847487103344316"></a>&开启 HTTPS</h2>
@@ -122,12 +130,13 @@
 <p>添加一条 CNAME 记录到 username.github.io 即可。</p>
 <p>使用一下命令查看效果：</p>
 <pre><code class="language-bash">$ dig mydomain.com +noall +answer
-mydomain.com	3600	IN A	XXX.XXX.XXX.XXX
+  mydomain.com	3600	IN A	XXX.XXX.XXX.XXX
 $ dig username.github.io +noall +answer
-username.github.io	3600	IN A	XXX.XXX.XXX.XXX
+  username.github.io	3600	IN A	XXX.XXX.XXX.XXX
 </code></pre>
 <p>XXX.XXX.XXX.XXX 为服务器 IP，两个命令的 IP 如果一致的话，说明已经生效了。</p>
-<p>然后在域名的 DNS 设置中添加 4 条 A 记录分别对印到：</p>
+<h3><a id="anchor_2197661492698187715"></a>添加 A 记录</h3>
+<p>在域名的 DNS 设置中添加 4 条 A 记录分别对印到：</p>
 <ul>
 <li>185.199.108.153</li>
 <li>185.199.109.153</li>
@@ -136,11 +145,11 @@ username.github.io	3600	IN A	XXX.XXX.XXX.XXX
 </ul>
 <p>如果生效了的话，使用 <code>dig</code>命令应该可以看到 4 条和上面 IP 对印的结果。</p>
 <p>最后需要确保 Repository -&gt; Settings -&gt; GitHub Pages -&gt; Custom domain 中的 Enforce HTTPS 是勾选状态。</p>
-<p>到这里迁移就全部结束了。</p>
+<p>最后，访问 https://mydomain.com 应该可以看到绿色的小锁了。</p>
 <h1><a id="anchor_1662521891503104219"></a>Tips</h1>
 <ul>
 <li>注意上文中出现的 username 全部需要替换为也登陆使用的用户名。</li>
-<li>Github Pages 支持一个站点同时绑定顶级域名和 www 子域名，但是据文档所说每个站点只能绑定一个非 www 的子域名。</li>
+<li>GitHub Pages 支持一个站点同时绑定顶级域名和 www 子域名，但是据文档所说每个站点只能绑定一个非 www 的子域名。</li>
 <li>如果之前域名有解析到其他位置的话，在进行操作之前可以先将域名的 TTL 设置短一点，方便修改解析后快速生效。</li>
 </ul>
 
@@ -167,7 +176,7 @@ username.github.io	3600	IN A	XXX.XXX.XXX.XXX
                 </li>
                 
                 <li>
-                    <a href="/tags.·html" target="">标签</a>
+                    <a href="/tags.html" target="">标签</a>
                 </li>
                 
                 <li>
