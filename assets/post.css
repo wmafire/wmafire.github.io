@@ -378,11 +378,14 @@ blockquote footer cite:before {
 .post-wrapper .post .content h4,
 .post-wrapper .post .content h5,
 .post-wrapper .post .content h6 {
-  font-weight: 300;
+  font-weight: 600;
 }
 .post-wrapper .post .content h1::before {
   content: '# ';
   color: #2bbc8a;
+}
+.post-wrapper .post .content p {
+  text-indent: 28px;
 }
 .post-wrapper .post .content a {
   color: #c9cacc;
