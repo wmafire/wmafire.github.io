@@ -1,0 +1,185 @@
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>使用 Github Pages 部署静态网站|BAIYAN</title>
+<link rel="shortcut icon" href="/logo.png"><link href="/./assets/post.css" rel="stylesheet"></head>
+
+<body>
+  <div class="post-wrapper">
+
+    <div class="side">
+      <div class="toggle">
+      <i class="iconfont icon-dian"></i>
+      </div>
+      <div class="toc">
+        <ol>
+          
+          
+          <li class="t1" >
+            <a href="#anchor_3620932083382753783">迁移文件</a>
+          </li>
+          
+          <li class="t2" >
+            <a href="#anchor_16152966785279059658">选择站点类型</a>
+          </li>
+          
+          <li class="t2" >
+            <a href="#anchor_6550657040707835860">创建</a>
+          </li>
+          
+          <li class="t2" >
+            <a href="#anchor_16502351957971548275">&amp;配置Repository</a>
+          </li>
+          
+          <li class="t2" >
+            <a href="#anchor_14572779630562288028">绑定域名</a>
+          </li>
+          
+          <li class="t2" >
+            <a href="#anchor_5713847487103344316">&amp;开启 HTTPS</a>
+          </li>
+          
+          <li class="t3" >
+            <a href="#anchor_14905539486182806209">添加 CNAME</a>
+          </li>
+          
+          <li class="t1" >
+            <a href="#anchor_1662521891503104219">Tips</a>
+          </li>
+          
+          
+        </ol>
+      </div>
+
+    </div>
+    <div class="center">
+      <header class="header-wrapper">
+    <a class="one" href="">
+        <div class="logo" style="background-image:url('/assets/logo.png')"></div>
+        <div class="title">
+            <h1>BAIYAN</h1>
+        </div>
+    </a>
+    <div class="toggle" >
+        <i class="iconfont icon-menu"></i>
+    </div>
+    <ul class="menu">
+        
+        <li>
+            <a href="/index.html" target="">首页</a>
+        </li>
+        
+        <li>
+            <a href="/archives.html" target="">归档</a>
+        </li>
+        
+        <li>
+            <a href="/tags.·html" target="">标签</a>
+        </li>
+        
+        <li>
+            <a href="https://github.com/obaiyan" target="_blank">Github</a>
+        </li>
+        
+    </ul>
+</header>
+      <div class="content-wrapper">
+        <article class="post">
+          <header class="header">
+            <h1 class="title"> 使用 Github Pages 部署静态网站 </h1>
+            <div class="meta">
+              <div class="date">
+                <time>Nov  5, 2018</time>
+              </div>
+              <div class="tags">
+                <i class="iconfont icon-tag"></i>
+                
+              </div>
+            </div>
+          </header>
+          <div class="content">
+            <p>之前网站部署在阿里云香港的 VPS 上，最近发现某些网络环境下HTTPS打不开网站，开始还以为是 GFW 的问题。但是测试发现 4G 网络访问正常，HTTP 也能正常访问。搜索了一番发现了很多相似的情况。问题是 SSL ClientHello 包无法获得响应导致的。使用 Wrieshick 抓包的结果也证实了这一点。这个锅先甩给运营商吧。</p>
+<p>目前还不知道更换证书或更换 VPS 能不能解决这个问题（感觉即使能解决也不是持久之计，有条件的同学还是备案用境内的 VPS 吧）。由于域名转入备案太麻烦，而且正巧发现 Github Pages 对自定义域名支持 HTTPS 了，所以决定吧网站迁移到 Github Pages 上。</p>
+<h1><a id="anchor_3620932083382753783"></a>迁移文件</h1>
+<h2><a id="anchor_16152966785279059658"></a>选择站点类型</h2>
+<p>Github Pages 站点的静态文件都保存在 Repository 中。Github Pages 提供了 User or organization site 和 Project site 两种方式托管静态文件。</p>
+<p>两种方式基本没有什么区别。由于我要部署的是个人博客，因此我选择使用 User or organization site。</p>
+<p>顺带说一句，Github Pages 是支持 Jekyll 模版语法。所以可以通过 Jekyll 来“动态”生成网站。</p>
+<h2><a id="anchor_6550657040707835860"></a>创建<a id="anchor_16502351957971548275"></a>&配置Repository</h2>
+<p>首先需要创建一个以 username.github.io 命名的 Repository。<strong>注意替换 <code>username</code>为你的用户名</strong>。</p>
+<p>创建好 Repository 后按正常的提交代码的流程将站点文件提交到 master 分支。</p>
+<p>如果操作正确而且如果你不需要绑定域名的话，现在你就可以通过访问 username.github.io 访问你的网站了。</p>
+<h2><a id="anchor_14572779630562288028"></a>绑定域名<a id="anchor_5713847487103344316"></a>&开启 HTTPS</h2>
+<p>首先在 Repository -&gt; Settings -&gt; GitHub Pages -&gt; Custom domain 中填写需要绑定的域名。</p>
+<p>下面开始解析域名 CNAME 和 A 记录二选一即可。</p>
+<h3><a id="anchor_14905539486182806209"></a>添加 CNAME</h3>
+<p>添加一条 CNAME 记录到 username.github.io 即可。</p>
+<p>使用一下命令查看效果：</p>
+<pre><code class="language-bash">$ dig mydomain.com +noall +answer
+mydomain.com	3600	IN A	XXX.XXX.XXX.XXX
+$ dig username.github.io +noall +answer
+username.github.io	3600	IN A	XXX.XXX.XXX.XXX
+</code></pre>
+<p>XXX.XXX.XXX.XXX 为服务器 IP，两个命令的 IP 如果一致的话，说明已经生效了。</p>
+<p>然后在域名的 DNS 设置中添加 4 条 A 记录分别对印到：</p>
+<ul>
+<li>185.199.108.153</li>
+<li>185.199.109.153</li>
+<li>185.199.110.153</li>
+<li>185.199.111.153</li>
+</ul>
+<p>如果生效了的话，使用 <code>dig</code>命令应该可以看到 4 条和上面 IP 对印的结果。</p>
+<p>最后需要确保 Repository -&gt; Settings -&gt; GitHub Pages -&gt; Custom domain 中的 Enforce HTTPS 是勾选状态。</p>
+<p>到这里迁移就全部结束了。</p>
+<h1><a id="anchor_1662521891503104219"></a>Tips</h1>
+<ul>
+<li>注意上文中出现的 username 全部需要替换为也登陆使用的用户名。</li>
+<li>Github Pages 支持一个站点同时绑定顶级域名和 www 子域名，但是据文档所说每个站点只能绑定一个非 www 的子域名。</li>
+<li>如果之前域名有解析到其他位置的话，在进行操作之前可以先将域名的 TTL 设置短一点，方便修改解析后快速生效。</li>
+</ul>
+
+          </div>
+        </article>
+        <div class="comment-wrapper">
+    <input id="post-id" value="8128a900-3a66-4253-baaa-b2890d281e29" type="hidden" />
+    <div id="comment-container">
+    </div>
+</div>
+      </div>
+      <footer class="footer-wrapper">
+    <div class="footer-left"> Copyright © 2018 BAIYAN </div>
+    <div class="footer-right">
+        <nav>
+            <ul>
+                
+                <li>
+                    <a href="/index.html" target="">首页</a>
+                </li>
+                
+                <li>
+                    <a href="/archives.html" target="">归档</a>
+                </li>
+                
+                <li>
+                    <a href="/tags.·html" target="">标签</a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/obaiyan" target="_blank">Github</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</footer>
+    </div>
+  </div>
+<script type="text/javascript" src="/./assets/post.js"></script></body>
+
+</html>
