@@ -22,39 +22,39 @@
           
           
           <li class="t1" >
-            <a href="#anchor_3620932083382753783">迁移文件</a>
+            <a href="#anchor_0">迁移文件</a>
           </li>
           
           <li class="t2" >
-            <a href="#anchor_16152966785279059658">选择站点类型</a>
+            <a href="#anchor_1">选择站点类型</a>
           </li>
           
           <li class="t2" >
-            <a href="#anchor_6550657040707835860">创建</a>
+            <a href="#anchor_2">创建</a>
           </li>
           
           <li class="t2" >
-            <a href="#anchor_16502351957971548275">&amp;配置Repository</a>
+            <a href="#anchor_3">&amp;配置Repository</a>
           </li>
           
           <li class="t2" >
-            <a href="#anchor_14572779630562288028">绑定域名</a>
+            <a href="#anchor_4">绑定域名</a>
           </li>
           
           <li class="t2" >
-            <a href="#anchor_5713847487103344316">&amp;开启 HTTPS</a>
+            <a href="#anchor_5">&amp;开启 HTTPS</a>
           </li>
           
           <li class="t3" >
-            <a href="#anchor_14905539486182806209">添加 CNAME</a>
+            <a href="#anchor_6">添加 CNAME</a>
           </li>
           
           <li class="t3" >
-            <a href="#anchor_2197661492698187715">添加 A 记录</a>
+            <a href="#anchor_7">添加 A 记录</a>
           </li>
           
           <li class="t1" >
-            <a href="#anchor_1662521891503104219">Tips</a>
+            <a href="#anchor_8">Tips</a>
           </li>
           
           
@@ -114,6 +114,8 @@
           <div class="content">
             <p>之前网站部署在阿里云香港的 VPS 上，最近发现某些网络环境下HTTPS打不开网站，开始还以为是 GFW 的问题。但是测试发现 4G 网络访问正常，HTTP 也能正常访问。搜索了一番发现了很多相似的情况。问题是 SSL ClientHello 包无法获得响应导致的。使用 Wrieshick 抓包的结果也证实了这一点。这个锅先甩给运营商吧。</p>
 <p>目前还不知道更换证书或更换 VPS 能不能解决这个问题（感觉即使能解决也不是持久之计，有条件的同学还是备案用境内的 VPS 吧）。由于域名转入备案太麻烦，而且正巧发现 Github Pages 对自定义域名支持 HTTPS 了，所以决定吧网站迁移到 Github Pages 上。</p>
+<pre><code class="language-java">System.out.print(&quot;Hello&quot;);
+</code></pre>
 <h1><a id="anchor_3620932083382753783"></a>迁移文件</h1>
 <h2><a id="anchor_16152966785279059658"></a>选择站点类型</h2>
 <p>GitHub Pages 站点的静态文件都保存在 Repository 中。GitHub Pages 提供了 User or organization site 和 Project site 两种方式托管静态文件。</p>
